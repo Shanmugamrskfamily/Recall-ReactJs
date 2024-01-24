@@ -37,7 +37,7 @@ function MyWallet() {
     const handleSubmit = (actionType) => {
         const money = parseFloat(amount);
         if (isNaN(money) || money <= 0) {
-            alert('Please enter a valid positive number.');
+            alert('Please enter a valid Amount! Try Again..');
             return;
         }
 
@@ -52,10 +52,12 @@ function MyWallet() {
             <p>Total Spent Money: <b>{wallet.totalSpent}</b></p>
             <p>Pending Loan Amount: <b>{wallet.totalPendingLoan}</b></p>
             <input type='number' name="money" id="money" value={amount} onChange={(e) => setAmount(e.target.value)} />
-            <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('addincome')}>Add Income</button>
+            <div style={{textAlign:'center'}}>
+            <button style={{ marginTop: '10px' }} onClick={() => handleSubmit('addincome')}>Add Income</button>
             <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('spendmoney')}>Spend Money</button>
             <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('borrowloan')}>Borrow Loan</button>
             <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('payloan')}>Pay Loan</button>
+            </div>
         </div>
     );
 }
