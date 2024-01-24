@@ -33,14 +33,14 @@ const walletReducer = (state, action) => {
 function MyWallet() {
     const [wallet, dispatch] = useReducer(walletReducer, initialWallet);
     const [amount, setAmount] = useState('');
-
+    
     const handleSubmit = (actionType) => {
         const money = parseFloat(amount);
         if (isNaN(money) || money <= 0) {
             alert('Please enter a valid Amount! Try Again..');
             return;
         }
-
+        
         dispatch({ type: actionType, amount: money });
     };
 
