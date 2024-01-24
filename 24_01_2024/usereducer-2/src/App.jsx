@@ -6,7 +6,7 @@ function App() {
   
 
   return (
-    <div style={{display:'flex',flexDirection:'column',alignItems:'center',alignContent:'center'}}>
+    <div>
       <MyWallet/>
     </div>
   )

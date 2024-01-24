@@ -45,21 +45,25 @@ function MyWallet() {
     };
 
     return (
-        <div>
-            <h1>MyWallet</h1>
-            <p>Wallet Current Balance: <b>{wallet.walletBalance}</b></p>
-            <p>Total Income Earned: <b>{wallet.totalIncome}</b></p>
-            <p>Total Spent Money: <b>{wallet.totalSpent}</b></p>
-            <p>Pending Loan Amount: <b>{wallet.totalPendingLoan}</b></p>
-            <input type='number' name="money" id="money" value={amount} onChange={(e) => setAmount(e.target.value)} />
-            <div style={{textAlign:'center'}}>
-            <button style={{ marginTop: '10px' }} onClick={() => handleSubmit('addincome')}>Add Income</button>
-            <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('spendmoney')}>Spend Money</button>
-            <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('borrowloan')}>Borrow Loan</button>
-            <br /><button style={{ marginTop: '10px' }} onClick={() => handleSubmit('payloan')}>Pay Loan</button>
+        <div className="wallet-container">
+          <h1>My Wallet</h1>
+          <div className="wallet-info">
+            <p>Wallet Current Balance: <b>₹{wallet.walletBalance.toFixed(2)}</b></p>
+            <p>Total Income Earned: <b>₹{wallet.totalIncome.toFixed(2)}</b></p>
+            <p>Total Spent Money: <b>₹{wallet.totalSpent.toFixed(2)}</b></p>
+            <p>Pending Loan Amount: <b>₹{wallet.totalPendingLoan.toFixed(2)}</b></p>
+          </div>
+          <div className="wallet-actions">
+            <input type='number' name="money" id="money" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter Amount" />
+            <div className="action-buttons">
+              <button onClick={() => handleSubmit('addincome')}>Add Income</button>
+              <button onClick={() => handleSubmit('spendmoney')}>Spend Money</button>
+              <button onClick={() => handleSubmit('borrowloan')}>Borrow Loan</button>
+              <button onClick={() => handleSubmit('payloan')}>Pay Loan</button>
             </div>
+          </div>
         </div>
-    );
-}
-
-export default MyWallet;
+      );
+    }
+    
+    export default MyWallet;
