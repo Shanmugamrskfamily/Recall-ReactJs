@@ -1,0 +1,86 @@
+body {
+  margin: 10px;
+}
+
+.customer-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.customer-form input {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.customer-list {
+  list-style: none;
+  padding: 0;
+}
+
+.customer-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-button {
+  padding: 8px;
+  margin-right: 5px;
+  cursor: pointer;
+  background-color: #bea10d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+.delete-button {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #f2312e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.edit-button:hover {
+  background-color: #b5c80f;
+}
+.delete-button:hover {
+  background-color: #cc0e21;
+}
+.customer-form button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #78b1fd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.customer-form button:hover {
+  background-color: #1770eb;
+}
+
+.customer-form button:active {
+  background-color: #062174;
+}
