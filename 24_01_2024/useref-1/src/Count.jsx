@@ -10,8 +10,7 @@ const handleClick=()=>{
     countRef.current+=1;
     setCount(count+1);
     console.log('Current Ref: ',countRef.current);
-    console.log('Previous Ref: ',previousCount.current);
-    
+    console.log('Previous Ref: ',previousCount.current);   
 }
   return (
     <div>
