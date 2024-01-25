@@ -65,8 +65,8 @@ const CustomerList = () => {
           onChange={(e) => setCustomerData({ ...customerData, email: e.target.value })}
         />
         <input
-          type="tel"
-          placeholder="Phone"
+          type='tel'
+          placeholder="Phone Number"
           value={customerData.phone}
           onChange={(e) => setCustomerData({ ...customerData, phone: e.target.value })}
         />
