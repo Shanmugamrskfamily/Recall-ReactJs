@@ -12,6 +12,7 @@ function UseEffectFetch() {
           throw new Error(`HTTP Request Problem ${response.status}`);
         }
         const data = await response.json();
+        console.log(data)
         setProductData(data);
       } catch (error) {
         console.error(`Error: ${error.message}`);
