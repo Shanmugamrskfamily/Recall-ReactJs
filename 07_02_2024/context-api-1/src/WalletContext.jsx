@@ -14,7 +14,9 @@ const WalletProvider = ({ children }) => {
 
   useEffect(() => {
     const wallet = JSON.parse(localStorage.getItem("myWallet"));
-    if (wallet) setWalletData(wallet);
+    if (wallet){
+        setWalletData(wallet)
+    };
   }, []);
 
   const handleTransaction = (amount, type) => {
