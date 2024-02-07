@@ -27,22 +27,26 @@ const WalletProvider = ({ children }) => {
       if (type === "add-income") {
         updatedData.totalIncome += parseInt(amount);
         updatedData.walletBalance += amount;
+        alert('Transaction Done!');
       } else if (type === "add-expense") {
         if (updatedData.walletBalance < amount) {
-          alert(`Insufficient Wallet Balance! Available Balance: ₹${updatedData.walletBalance.toFixed(2)}`);
-          return;
+          alert(`Insufficient Wallet Balance! Available Balance: ₹${updatedData.walletBalance}`);
+          return updatedData;
         }
         updatedData.walletBalance -= amount;
         updatedData.totalExpense += amount;
+        alert('Transaction Done!');
       } else if (type === "get-loan") {
+        const intrest=amount/100*12.5;
         updatedData.totalLoan += amount;
-        updatedData.walletBalance += amount;
+        updatedData.walletBalance += amount-intrest;
+        alert('Transaction Done!');
       } else if (type === "pay-loan") {
         if (updatedData.totalLoan < amount) {
           alert(
             `Your Total Pending Loan ₹${updatedData.totalLoan.toFixed(2)} is lower than the amount, ₹${amount.toFixed(2)} you entered!`
           );
-          return;
+          return updatedData;
         }
         if (updatedData.walletBalance < amount) {
           alert(
@@ -52,6 +56,7 @@ const WalletProvider = ({ children }) => {
         }
         updatedData.totalLoan -= amount;
         updatedData.walletBalance -= amount;
+        alert('Transaction Done!');
       }
       localStorage.setItem("myWallet", JSON.stringify(updatedData));
       return updatedData;
