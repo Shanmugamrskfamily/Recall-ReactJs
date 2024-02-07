@@ -10,63 +10,61 @@ const WalletProvider = ({ children }) => {
     totalIncome: parseFloat(0),
     transaction_history:[],
   };
-
   const [walletData, setWalletData] = useState(initialWalletData);
 
   useEffect(() => {
     const wallet = JSON.parse(localStorage.getItem("myWallet"));
-    if (!wallet) {
-      localStorage.setItem("myWallet", JSON.stringify(initialWalletData));
-    } else {
-      setWalletData(wallet);
-    }
+    if (wallet) setWalletData(wallet);
   }, []);
 
   const handleTransaction = (amount, type) => {
-    setWalletData((prevWalletData) => {
+    setWalletData(prevWalletData => {
       const updatedData = { ...prevWalletData };
       const currentDate = new Date();
       const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
       const transactionMessage = `${formattedDate} ${type === 'add-income' ? 'Income Added' : type === 'add-expense' ? 'Expense Added' : type === 'get-loan' ? 'Loan Received' : 'Loan Paid'}: ₹${amount.toFixed(2)}`;
-      const alertConfirm=alert(`${type==='add-income'?'Income Added':type=='add-expense'?'Expense Added':type==='get-loan'?'Loan Received':'Loan Paid'} Successfully!`);
-      if (type === "add-income") {
-        updatedData.totalIncome += parseInt(amount);
-        updatedData.walletBalance += amount;
-        updatedData.transaction_history.push(transactionMessage);
-        alertConfirm;
-      } else if (type === "add-expense") {
-        if (updatedData.walletBalance < amount) {
-          alert(`Insufficient Wallet Balance! Available Balance: ₹${updatedData.walletBalance}`);
-          return updatedData;
-        }
-        updatedData.walletBalance -= amount;
-        updatedData.totalExpense += amount;
-        updatedData.transaction_history.push(transactionMessage);
-        alertConfirm;
-      } else if (type === "get-loan") {
-        const intrest=amount/100*12.5;
-        updatedData.totalLoan += amount;
-        updatedData.walletBalance += amount-intrest;
-        updatedData.transaction_history.push(transactionMessage);
-        alertConfirm;
-      } else if (type === "pay-loan") {
-        if (updatedData.totalLoan < amount) {
-          alert(
-            `Your Total Pending Loan ₹${updatedData.totalLoan.toFixed(2)} is lower than the amount, ₹${amount.toFixed(2)} you entered!`
-          );
-          return updatedData;
-        }
-        if (updatedData.walletBalance < amount) {
-          alert(
-            `Insufficient Wallet Balance to Pay Loan! Available Balance: ₹${updatedData.walletBalance.toFixed(2)}`
-          );
-          return updatedData;
-        }
-        updatedData.totalLoan -= amount;
-        updatedData.walletBalance -= amount;
-        updatedData.transaction_history.push(transactionMessage);
-        alertConfirm;
-      }
+      
+      switch (type) {
+        case "add-income":
+          updatedData.totalIncome += parseInt(amount);
+          updatedData.walletBalance += amount;
+          break;
+        case "add-expense":
+          if (updatedData.walletBalance < amount) {
+            alert(`Insufficient Wallet Balance! Available Balance: ₹${updatedData.walletBalance}`);
+            break;
+          }
+          else {
+            updatedData.walletBalance -= amount;
+            updatedData.totalExpense += amount;
+            alert(`Expense Added Successfully!`);
+          }
+          break;
+        case "get-loan":
+          const intrest=amount/100*12.5;
+          updatedData.totalLoan += amount;
+          updatedData.walletBalance += amount-intrest;
+          alert(`Loan Received Successfully!`);
+          break;
+        case "pay-loan":
+          if (updatedData.totalLoan < amount) {
+            alert(`Your Total Pending Loan ₹${updatedData.totalLoan.toFixed(2)} is lower than the amount, ₹${amount.toFixed(2)} you entered!`);
+            break;
+          }
+          else if (updatedData.walletBalance < amount) {
+            alert(`Insufficient Wallet Balance to Pay Loan! Available Balance: ₹${updatedData.walletBalance.toFixed(2)}`);
+            break;
+          }
+          else {
+            updatedData.totalLoan -= amount;
+            updatedData.walletBalance -= amount;
+            alert(`Loan Paid Successfully!`);
+          }
+          break;
+        default:
+          break;
+      }    
+      updatedData.transaction_history.push(transactionMessage);
       localStorage.setItem("myWallet", JSON.stringify(updatedData));
       return updatedData;
     });
@@ -78,5 +76,4 @@ const WalletProvider = ({ children }) => {
     </WalletContext.Provider>
   );
 };
-
 export { WalletContext, WalletProvider };
