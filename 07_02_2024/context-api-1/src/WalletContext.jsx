@@ -28,6 +28,8 @@ const WalletProvider = ({ children }) => {
         case "add-income":
           updatedData.totalIncome += parseInt(amount);
           updatedData.walletBalance += amount;
+          alert('Income Added Successfully!');
+          updatedData.transaction_history.push(transactionMessage);
           break;
         case "add-expense":
           if (updatedData.walletBalance < amount) {
@@ -37,6 +39,7 @@ const WalletProvider = ({ children }) => {
           else {
             updatedData.walletBalance -= amount;
             updatedData.totalExpense += amount;
+            updatedData.transaction_history.push(transactionMessage);
             alert(`Expense Added Successfully!`);
           }
           break;
@@ -44,6 +47,7 @@ const WalletProvider = ({ children }) => {
           const intrest=amount/100*12.5;
           updatedData.totalLoan += amount;
           updatedData.walletBalance += amount-intrest;
+          updatedData.transaction_history.push(transactionMessage);
           alert(`Loan Received Successfully!`);
           break;
         case "pay-loan":
@@ -58,13 +62,13 @@ const WalletProvider = ({ children }) => {
           else {
             updatedData.totalLoan -= amount;
             updatedData.walletBalance -= amount;
+            updatedData.transaction_history.push(transactionMessage);
             alert(`Loan Paid Successfully!`);
           }
           break;
         default:
           break;
       }    
-      updatedData.transaction_history.push(transactionMessage);
       localStorage.setItem("myWallet", JSON.stringify(updatedData));
       return updatedData;
     });
