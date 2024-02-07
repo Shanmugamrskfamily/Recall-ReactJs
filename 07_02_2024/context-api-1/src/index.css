@@ -64,6 +64,30 @@ nav ul li a:hover {
 .transactions-button:hover {
   background-color: #0056b3;
 }
+.transaction-history {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.transaction-history h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.transaction-history ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-history li {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
 .wallet-container {
   text-align: center;
   margin: 20px;

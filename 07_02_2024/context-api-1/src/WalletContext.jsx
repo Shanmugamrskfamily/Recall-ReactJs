@@ -8,6 +8,7 @@ const WalletProvider = ({ children }) => {
     totalLoan: parseFloat(0),
     totalExpense: parseFloat(0),
     totalIncome: parseFloat(0),
+    transaction_history:[],
   };
 
   const [walletData, setWalletData] = useState(initialWalletData);
@@ -24,10 +25,15 @@ const WalletProvider = ({ children }) => {
   const handleTransaction = (amount, type) => {
     setWalletData((prevWalletData) => {
       const updatedData = { ...prevWalletData };
+      const currentDate = new Date();
+      const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
+      const transactionMessage = `${formattedDate} ${type === 'add-income' ? 'Income Added' : type === 'add-expense' ? 'Expense Added' : type === 'get-loan' ? 'Loan Received' : 'Loan Paid'}: ₹${amount.toFixed(2)}`;
+      const alertConfirm=alert(`${type==='add-income'?'Income Added':type=='add-expense'?'Expense Added':type==='get-loan'?'Loan Received':'Loan Paid'} Successfully!`);
       if (type === "add-income") {
         updatedData.totalIncome += parseInt(amount);
         updatedData.walletBalance += amount;
-        alert('Transaction Done!');
+        updatedData.transaction_history.push(transactionMessage);
+        alertConfirm;
       } else if (type === "add-expense") {
         if (updatedData.walletBalance < amount) {
           alert(`Insufficient Wallet Balance! Available Balance: ₹${updatedData.walletBalance}`);
@@ -35,12 +41,14 @@ const WalletProvider = ({ children }) => {
         }
         updatedData.walletBalance -= amount;
         updatedData.totalExpense += amount;
-        alert('Transaction Done!');
+        updatedData.transaction_history.push(transactionMessage);
+        alertConfirm;
       } else if (type === "get-loan") {
         const intrest=amount/100*12.5;
         updatedData.totalLoan += amount;
         updatedData.walletBalance += amount-intrest;
-        alert('Transaction Done!');
+        updatedData.transaction_history.push(transactionMessage);
+        alertConfirm;
       } else if (type === "pay-loan") {
         if (updatedData.totalLoan < amount) {
           alert(
@@ -52,11 +60,12 @@ const WalletProvider = ({ children }) => {
           alert(
             `Insufficient Wallet Balance to Pay Loan! Available Balance: ₹${updatedData.walletBalance.toFixed(2)}`
           );
-          return;
+          return updatedData;
         }
         updatedData.totalLoan -= amount;
         updatedData.walletBalance -= amount;
-        alert('Transaction Done!');
+        updatedData.transaction_history.push(transactionMessage);
+        alertConfirm;
       }
       localStorage.setItem("myWallet", JSON.stringify(updatedData));
       return updatedData;
