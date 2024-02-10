@@ -1,0 +1,52 @@
+/* NotesList.css */
+.notes-list-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.notes-list-input {
+  margin-right: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+  height: 200px;
+}
+
+.notes-list-action-button {
+  padding: 10px 20px;
+  background-color: #1e8405;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.notes-list-note {
+  margin-top: 10px;
+}
+
+.notes-list-note p {
+  margin: 5px 0;
+}
+
+.notes-list-update-button {
+  margin: 5px;
+  padding: 8px 16px;
+  background-color: #a6850d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.notes-list-delete-button {
+  padding: 8px 16px;
+  background-color: #920816;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
