@@ -21,6 +21,7 @@ export const NotesList = () => {
         console.log('Key: ',event.key);
         setInputValue(event.target.value);
     };
+    
     const handleAction = () => {
         if (isUpdating && updateIndex !== null) {
             updateNote(updateIndex, inputValue);
