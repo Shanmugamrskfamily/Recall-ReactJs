@@ -19,9 +19,7 @@ export const NotesList = () => {
 
     const handleInputChange = (event) => {
         console.log('Key: ',event.key);
-        
-            setInputValue(event.target.value);
-        
+        setInputValue(event.target.value);
     };
     const handleAction = () => {
         if (isUpdating && updateIndex !== null) {
@@ -40,7 +38,7 @@ export const NotesList = () => {
         <div className="notes-list-container">
             <h1>Notes List</h1>
             <div className='input-Note'>
-            <textarea className="notes-list-input"type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleInputChange} placeholder="Enter your note..." multiline='true'/>
+            <textarea tabIndex="-1" className="notes-list-input"type="text" value={inputValue} onChange={handleInputChange} onKeyDown={handleInputChange} placeholder="Enter your note..." multiline='true'/>
             <div>
             <button className={isUpdating?'notes-list-update-button':'notes-list-action-button'} onClick={handleAction}>{isUpdating ? 'Update Note' : 'Create Note'}</button>
             </div>

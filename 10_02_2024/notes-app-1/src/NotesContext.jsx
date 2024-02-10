@@ -10,7 +10,7 @@ const NotesProvider = ({ children }) => {
     if (myNotes) {
       setNotes(myNotes);
     }
-  }, []); // Empty dependency array to run the effect only once when the component mounts
+  }, []);
 
   const saveNotesToLocalStorage = (updatedNotes) => {
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
@@ -18,6 +18,7 @@ const NotesProvider = ({ children }) => {
 
   const createNote = (note) => {
     const updatedNotes = [...notes, note];
+    
     setNotes(updatedNotes);
     saveNotesToLocalStorage(updatedNotes);
   };
