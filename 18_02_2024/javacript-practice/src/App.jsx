@@ -5,6 +5,9 @@ import PrintStar from './PrintStar'
 import Count from './Count'
 import ShapesWithEffects from './ShapesWithEffects'
 import String from './String'
+import MapandForEach from './MapandForEach'
+import Factorial from './Factorial'
+import PrimeNumbers from './PrimeNumbers'
 
 function App() {
   
@@ -18,6 +21,9 @@ function App() {
       <Route path='/count' element={<Count/>} />
       <Route path='/shapes' element={<ShapesWithEffects/>}/>
       <Route path='/string' element={<String/>}/>
+      <Route path='/map' element={<MapandForEach/>} />
+      <Route path='/factor' element={<Factorial/>} />
+      <Route path='/prime' element={<PrimeNumbers/>}/>
     </Routes>
     </div>
     </BrowserRouter>
