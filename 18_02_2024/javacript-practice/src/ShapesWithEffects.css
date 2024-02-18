@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.circle,
+.square,
+.rectangle {
+  margin: 3rem;
+  background-color: yellow;
+  border: 2px solid black;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+}
+
+.rectangle {
+  width: 300px;
+  height: 100px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid yellow;
+}
+
+.circle:hover,
+.square:hover,
+.rectangle:hover,
+.triangle:hover {
+  box-shadow: 0 0 20px rgba(250, 13, 13, 0.7);
+  transform: scale(1.2);
+}
