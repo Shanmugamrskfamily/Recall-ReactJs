@@ -4,7 +4,7 @@ function PrimeNumbers() {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [output, setOutput] = useState('');
-
+    
     const findPrimeNumbers = () => {
         if (start === undefined || isNaN(start) || end === undefined || isNaN(end) || start<=0 || end>10000) {
             alert('Please enter valid numbers, between 1 to 10000 !');

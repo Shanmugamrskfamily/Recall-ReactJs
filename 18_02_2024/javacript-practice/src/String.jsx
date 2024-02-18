@@ -6,22 +6,32 @@ function String() {
 
     const [input,setInput]=useState('');
 
+    const validInput=()=>{
+        if(input.toString().trim().length===0){
+            return alert('Invalid Input!');
+        }
+    }
+
     const regularReverse=()=>{
+        validInput();
         const reversed=input.trim().split('').reverse().join('');
         setStringValue(reversed);
     }
 
     const eachWordReverse=()=>{
+        validInput();
         const reversedSentenece=input.trim().split(' ').map(word=>word.split('').reverse().join('')).join(' ');
         setStringValue(reversedSentenece);
     }
 
     const titleUpperCase=()=>{
+        validInput();
         const toUpper=input.trim().split(' ').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
         setStringValue(toUpper);
     }
 
     const titleLowerCase=()=>{
+        validInput();
         const toLower=input.trim().split(' ').map(word=>word.charAt(0).toLocaleLowerCase()+word.toUpperCase().slice(1)).join(' ');
         setStringValue(toLower);
     }
