@@ -1,5 +1,5 @@
 
-- [Live Site](https://cart-context-api-shanmugam.netlify.app/) uses [Babel](https://babeljs.io/)
+- [Live Site](https://cart-context-api-shanmugam.netlify.app/)
 
 # React + Vite
 
