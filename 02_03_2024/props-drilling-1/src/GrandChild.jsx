@@ -8,7 +8,7 @@ function GrandChild(props) {
     const [toChild,setToChild]=useState('');
 
   return (
-    <div>
+    <div className='grandChild'>
         <h1>GrandChild</h1>
         <div>
             <label htmlFor="input">Data To Send: </label> <input type="text" value={input} onChange={(e)=>setInput(e.target.value)} />
