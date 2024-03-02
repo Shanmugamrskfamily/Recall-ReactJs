@@ -1,14 +1,15 @@
 
 import './App.css'
+import Button from './Button'
 
 function App() {
 
 
   return (
-<div>
-  
-</div>
-  )
+  <div>
+    <Button/>
+  </div>
+  );
 }
 
 export default App
